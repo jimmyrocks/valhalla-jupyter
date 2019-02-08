@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  notebook:
+    build:
+      context: ./notebook
+      dockerfile: ./Dockerfile
+    command: jupyter notebook --notebook-dir=/home/jovyan/work/ --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token=
+    user: "root"
+    ports:
+      - "8000:8888"
+    volumes:
+      - ./data/notebooks:/home/jovyan/work
+      - ./data/ipython:/home/jovyan
+
+  valhalla:
+    build:
+      context: ./valhalla
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./data/valhalla:/data/valhalla
+      - ./conf/valhalla:/conf
+      - ./scripts:/scripts
+    tty: true
+    env_file: environment.env
+    command: /bin/bash /scripts/start.sh
