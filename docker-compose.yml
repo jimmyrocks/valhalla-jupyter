@@ -6,7 +6,7 @@ services:
       context: ./notebook
       dockerfile: ./Dockerfile
     command: jupyter notebook --notebook-dir=/home/jovyan/work/ --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token=
-    user: "root"
+    user: root
     ports:
       - "8000:8888"
     volumes:
@@ -23,3 +23,18 @@ services:
       - ./scripts:/scripts
     env_file: environment.env
     command: /bin/bash /scripts/start.sh
+
+  postgres:
+    build:
+      context: ./postgres
+      dockerfile: ./Dockerfile
+    links:
+      - valhalla
+    env_file: environment.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./scripts/postgres:/docker-entrypoint-initdb.d
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./conf/postgres:/config
+      - ./data/valhalla:/data/valhalla
