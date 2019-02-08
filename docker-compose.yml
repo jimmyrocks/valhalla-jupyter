@@ -21,6 +21,5 @@ services:
       - ./data/valhalla:/data/valhalla
       - ./conf/valhalla:/conf
       - ./scripts:/scripts
-    tty: true
     env_file: environment.env
     command: /bin/bash /scripts/start.sh
