@@ -32,7 +32,6 @@ if [ ! -f $VALHALLA_JSON ]; then
     tar cf $VALHALLA_TILE_EXTRACT --no-recursion --absolute-names -T -
 
   rm -rf $VALHALLA_TILE_DIR
-  rm -rf $VALHALLA_DATA
 fi
 
 #start up the server
