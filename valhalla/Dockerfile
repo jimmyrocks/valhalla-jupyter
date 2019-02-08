@@ -15,6 +15,7 @@ RUN apt-get update -qq && \
       curl \
       g++ \
       gcc \
+      gettext-base \
       git \
       jq \
       lcov \
