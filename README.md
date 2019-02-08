@@ -20,4 +20,12 @@
 
 # Notebooks
 
-* So far only a simple example exists
+* Postgres example
+  * Shows how to get restuarants within 1000 meters of a point and route to all of them
+* example
+  * Shows how to get a route from valhalla and draw it in leaflet
+
+# Postgres
+
+* To set up the database with the pbf downloaded for routing, use this command
+`sudo docker-compose exec postgres /bin/cat /docker-entrypoint-initdb.d/init-load-data.sh`
