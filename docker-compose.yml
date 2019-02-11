@@ -5,13 +5,12 @@ services:
     build:
       context: ./notebook
       dockerfile: ./Dockerfile
-    command: jupyter notebook --notebook-dir=/home/jovyan/work/ --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token=
-    user: root
+    command: python3 -m notebook --notebook-dir=/notebooks/ --no-browser --ip=0.0.0.0 --allow-root --NotebookApp.token=
     ports:
       - "8000:8888"
     volumes:
-      - ./data/notebooks:/home/jovyan/work
-      - ./data/ipython:/home/jovyan
+      - ./data/notebooks:/notebooks
+      - ./data/ipython:/root/
 
   valhalla:
     build:
