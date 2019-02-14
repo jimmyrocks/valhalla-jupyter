@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker_version="18.06.1~ce-0~ubuntu"
+docker_version="5:18.09.2~3-0~ubuntu-bionic"
 docker_compose_version=1.23.2
 
 # Install Docker:
@@ -24,7 +24,7 @@ sudo apt-get install -y \
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 # 3.1: Verify the key
-key_verify=`sudo apt-key fingerprint 0EBFCD88 | grep 'Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88'`
+key_verify=`sudo apt-key fingerprint 0EBFCD88 | grep '9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88'`
 if [[ "$key_verify" = "" ]]; then
   echo "Cannot verify Docker Install, see: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#set-up-the-repository"
   exit 1
